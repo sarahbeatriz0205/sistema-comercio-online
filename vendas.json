@@ -1,0 +1,14 @@
+[
+    {
+        "idCompra": 1,
+        "data": "13/12/2025 13:56:01",
+        "idCliente": 3,
+        "Total": 398.0
+    },
+    {
+        "idCompra": 2,
+        "data": "13/12/2025 13:57:57",
+        "idCliente": 3,
+        "Total": 199.0
+    }
+]
