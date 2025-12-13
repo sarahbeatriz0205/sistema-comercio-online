@@ -4,7 +4,7 @@
 O projeto versionado neste repositório é uma aplicação desenvolvida na disciplina de **Programação Orientada a Objetos (POO)** e consiste em um sistema de loja virtual que permite, assim como em um sistema real, a compra de produtos, visualização de produtos disponíveis, adição de produtos a uma lista de favoritos, entre outras funções. Além disso, existem os privilégios de administrador, como listar todas as vendas já feitas por cada cliente, inserir e excluir produtos na loja, clientes, categorias de produtos, entre mais diversas funções. 
 
 ## 🏷️ Funcionalidades
-- **Entrar no sistema:** Permite entrar como administradore como cliente comum
+- **Entrar no sistema:** Permite entrar como administrador e como cliente comum
 
 - **Criar nova conta:** Permite criar um novo cliente
 #### Entrando como administrador
