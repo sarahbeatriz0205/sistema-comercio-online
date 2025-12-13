@@ -118,11 +118,20 @@ class View:
     def produto_excluir(id):
         c = Produto(id)
         ProdutoDAO.excluir(c)
-    def produto_reajuste(percentual): # validar reajuste depois
+    def produto_reajuste(percentual):
         for obj in ProdutoDAO.listar():
             reajuste = obj.get_preco() * (1 + percentual)
             obj.set_preco(reajuste)
             ProdutoDAO.atualizar(obj)
+    
+    #def produto_reajuste_estoque(idVenda, idCliente):
+     #   venda = VendaDAO.listar_idCliente(idVenda, idCliente) # tem o id da compra . posso associar ao venda_item pra pegar a qtd
+      #  for v in venda:
+       #     idCompra = v.get_idCompra() 
+            #reajuste_estoque = venda.get_qtd() - obj.get_estoque()
+            #obj.set_estoque(reajuste_estoque)
+            #ProdutoDAO.atualizar(obj)
+
     def produto_atualizar(id, descricao, preco, estoque, idCategoria):
         if descricao == "" or preco == 0.0 or estoque == 0:
             raise ValueError("Erro! O preenchimento de todos os campos é obrigatório.")

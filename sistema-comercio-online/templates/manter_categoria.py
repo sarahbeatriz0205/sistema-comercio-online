@@ -1,6 +1,7 @@
 import streamlit as st
 import pandas as pd
 from views import View
+import time
 
 class ManterCategoriaUI:
     def main():
@@ -25,9 +26,13 @@ class ManterCategoriaUI:
         id = 0
         descricao = st.text_input("Descrição")
         if st.button("Inserir"): 
-            View.categoria_inserir(descricao)
-            st.success("Categoria adicionado com sucesso!")
-            st.rerun()
+            try:
+                View.categoria_inserir(descricao)
+                st.success("Categoria adicionado com sucesso!")
+                time.sleep(1)
+                st.rerun()
+            except Exception as erro:
+                st.error(f"{erro}")
 
     def atualizar():
         categorias = View.categoria_listar()
@@ -36,13 +41,16 @@ class ManterCategoriaUI:
             op = st.selectbox("Atualizar categorias", categorias)
             descricao = st.text_input("Nova descrição",  op.get_descricao())
             if st.button("Atualizar"):
-                id = op.get_id()
-                View.categoria_atualizar(id, descricao)
-                st.success("Categoria atualizada com sucesso!")
-                st.rerun()
+                try:
+                    id = op.get_id()
+                    View.categoria_atualizar(id, descricao)
+                    st.success("Categoria atualizada com sucesso!")
+                    time.sleep(1)
+                    st.rerun()
+                except Exception as erro:
+                    st.error(f"{erro}")
     
     def excluir():
-        # selecionar um produto já existente e excluir
         categorias = View.categoria_listar()
         if len(categorias) == 0: st.write("Nenhum categoria cadastrada até o momento")
         else:

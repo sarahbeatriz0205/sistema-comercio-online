@@ -1,6 +1,7 @@
 import streamlit as st
 import pandas as pd
 from views import View
+import time
 
 class ManterClienteUI:
     def main():
@@ -31,6 +32,8 @@ class ManterClienteUI:
             try:
                 View.cliente_inserir(nome, email, telefone, senha)
                 st.success("Cliente inserido com sucesso")
+                time.sleep(1)
+                st.rerun()
             except Exception as error:
                 st.error(f"{error}")
 
@@ -48,6 +51,8 @@ class ManterClienteUI:
                     id = op.get_idCliente()
                     View.cliente_atualizar(id, nome, email, telefone, senha)
                     st.success("Cliente atualizado com sucesso!")
+                    time.sleep(1)
+                    st.rerun()
                 except Exception as erro:
                     st.error(f"{erro}")
 
