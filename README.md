@@ -1,7 +1,7 @@
 # 🏬 Sistema de Comércio Online
 
 ## ℹ️ Descrição
-O projeto versionado neste repositório é uma aplicação desenvolvida na disciplina de **Programação Orientada a Objetos (POO)** e consiste em um sistema de loja virtual que permite, assim como em um sistema real, a compra de produtos, visualização de produtos disponíveis, adição de produtos a uma lista de favoritos, entre outras funções. Além disso, existem os privilégios de administrador, como listar todas as vendas já feitas por cada cliente, inserir e excluir produtos na loja, clientes, categorias de produtos, entre mais diversas funções. 
+O projeto versionado neste repositório é uma aplicação desenvolvida na disciplina de **Programação Orientada a Objetos (POO)** e consiste em um sistema de **loja virtual** que permite, assim como em um sistema real, a compra de produtos, visualização de produtos disponíveis, adição de produtos a uma lista de favoritos, entre outras funções. Além disso, existem os privilégios de administrador, como listar todas as vendas já feitas por cada cliente, inserir e excluir produtos na loja, clientes, categorias de produtos, entre mais diversas funções. 
 
 ## 🏷️ Funcionalidades
 - **Entrar no sistema:** Permite entrar como administrador e como cliente comum
@@ -20,6 +20,8 @@ O projeto versionado neste repositório é uma aplicação desenvolvida na disci
 - **Favoritar produtos:** Permite o salvamento de produtos que o cliente gosta em uma lista, permitindo também a exclusão desse produto da lista de favoritos do cliente e a listagem de todos os produtos "favoritados"
 
 ## 🧑‍💻 Sobre o desenvolvimento
+- Arquitetura utilizada: Arquitetura MVT (Models - View - Templates)
+
 - Linguagem utilizada: Python 3.12.1
 
 - Para criação de interfaces gráficas: Módulo Streamlit (nativo da linguagem Python)
