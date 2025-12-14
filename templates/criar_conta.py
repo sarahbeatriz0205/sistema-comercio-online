@@ -10,5 +10,8 @@ class CriarContaUI:
         telefone = st.text_input("Número de telefone")
         senha = st.text_input("Senha", type="password")
         if st.button("Criar Conta"):
-            View.cliente_inserir(nome, email, telefone, senha)
-            st.success("Conta criada com sucesso!", icon="✅")
+            try:
+                View.cliente_inserir(nome, email, telefone, senha)
+                st.success("Conta criada com sucesso!", icon="✅")
+            except Exception as erro:
+                st.error(f"{erro}")
