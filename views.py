@@ -96,8 +96,6 @@ class View:
         id = 0
         if descricao == "":
             raise ValueError("Erro! O preenchimento de todos os campos é obrigatório.")
-        if "0" in descricao or "1" in descricao or "2" in descricao or "3" in descricao or "4" in descricao or "5" in descricao or "6" in descricao or "7" in descricao or "8" in descricao or "9" in descricao:
-            raise ValueError("Erro! A descrição não pode conter números.")
         if preco == 0.0 or preco < 0 or estoque == 0 or estoque < 0:
             raise ValueError("Erro! Nenhum dos valores podem ser menores ou iguais à 0.")
         c = Produto(id, descricao, preco, estoque, idCategoria)
@@ -111,8 +109,6 @@ class View:
             raise ValueError("Erro! O preenchimento de todos os campos é obrigatório.")
         if preco == 0.0 or preco < 0 or estoque == 0 or estoque < 0:
             raise ValueError("Erro! Nenhum dos valores podem ser menores ou iguais à 0.")
-        if "0" in descricao or "1" in descricao or "2" in descricao or "3" in descricao or "4" in descricao or "5" in descricao or "6" in descricao or "7" in descricao or "8" in descricao or "9" in descricao:
-            raise ValueError("Erro! A descrição não pode conter números.")
         c = Produto(id, descricao, preco, estoque)
         ProdutoDAO.atualizar(c)
     def produto_excluir(id):
@@ -123,14 +119,7 @@ class View:
             reajuste = obj.get_preco() * (1 + percentual)
             obj.set_preco(reajuste)
             ProdutoDAO.atualizar(obj)
-    
-    #def produto_reajuste_estoque(idVenda, idCliente):
-     #   venda = VendaDAO.listar_idCliente(idVenda, idCliente) # tem o id da compra . posso associar ao venda_item pra pegar a qtd
-      #  for v in venda:
-       #     idCompra = v.get_idCompra() 
-            #reajuste_estoque = venda.get_qtd() - obj.get_estoque()
-            #obj.set_estoque(reajuste_estoque)
-            #ProdutoDAO.atualizar(obj)
+                
 
     def produto_atualizar(id, descricao, preco, estoque, idCategoria):
         if descricao == "" or preco == 0.0 or estoque == 0:

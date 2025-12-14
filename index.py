@@ -43,6 +43,7 @@ class IndexUI:
         def sidebar():
                 if "cliente_id" not in st.session_state: IndexUI.menu_visitante()
                 else:
+                        st.sidebar.write("Bem-vindo(a), " + st.session_state["cliente_nome"])
                         admin = st.session_state["cliente_email"] == "admin@"
                         if admin: IndexUI.menu_admin()
                         else: IndexUI.menu_cliente()

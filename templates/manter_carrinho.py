@@ -36,9 +36,7 @@ class ManterCarrinhoUI:
 
     def comprar():
         idCliente = st.session_state["cliente_id"]
-        vendas_cliente = View.listar_compras(idCliente)
         st.write("Total: ", View.total(idCliente))
         if st.button("Finalizar compra"):
             st.success("Compra finalizada com sucesso!")
             View.finalizar_compra(idCliente)
-            View.produto_reajuste_estoque()
