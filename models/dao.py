@@ -1,4 +1,4 @@
-from abc import ABC
+from abc import ABC, abstractmethod
 
 class DAO(ABC):
     @classmethod
@@ -35,3 +35,11 @@ class DAO(ABC):
         if aux != None:
             cls.objetos.remove(aux)
         cls.salvar_json()
+    @classmethod
+    @abstractmethod
+    def salvar_json(cls):
+        pass
+    @classmethod
+    @abstractmethod
+    def abrir_json(cls):
+        pass  
