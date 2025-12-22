@@ -17,13 +17,13 @@ class ManterFavoritoUI:
         idCliente = st.session_state["cliente_id"]
         op = st.selectbox("Selecione o produto que você deseja favoritar", View.produto_listar())
         if op: 
-            idProduto = op.get_idProduto()
+            idProduto = op.get_id()
             if st.button("Curtir"):
                 c = Favorito(idProduto, idCliente)
                 View.favoritar(c)
                 st.success("Item favoritado com sucesso!")
 
-    def desfavoritar(): # na teoria, tá funcionando kkkkk
+    def desfavoritar():
         idCliente = st.session_state["cliente_id"]
         produtos_fav = View.produtos_favoritos(idCliente)
         if produtos_fav == None:

@@ -49,7 +49,7 @@ class ManterProdutoUI:
             categorias = st.selectbox("Nova categoria", View.categoria_listar())
             if len(View.categoria_listar()) > 0 and st.button("Atualizar"):
                 try:
-                    id = op.get_idProduto()
+                    id = op.get_id()
                     View.produto_atualizar(id, descricao, preco, estoque, categorias.get_id())
                     st.success("Produto atualizado com sucesso!")
                     time.sleep(1)
@@ -64,7 +64,7 @@ class ManterProdutoUI:
             op = st.selectbox("Excluir Produtos", produtos)
             if op:
                 if st.button("Excluir"):
-                    id = op.get_idProduto()
+                    id = op.get_id()
                     descricao = op.get_descricao()
                     preco = op.get_preco()
                     estoque = op.get_estoque()
@@ -84,7 +84,7 @@ class ManterProdutoUI:
             categorias = op.get_idCategoria()
             novo_preco = st.number_input("Reajuste", min_value=0.0, value=op.get_preco())
             if st.button("Confirmar alteração"):
-                id = op.get_idProduto()
+                id = op.get_id()
                 View.produto_atualizar(id, descricao, novo_preco, estoque, categorias)
                 st.success("Preço reajustado com sucesso!")
                 time.sleep(1)

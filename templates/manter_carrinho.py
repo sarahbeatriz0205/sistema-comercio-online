@@ -17,7 +17,7 @@ class ManterCarrinhoUI:
         idCliente = st.session_state["cliente_id"]
         op = st.selectbox("Selecione o produto que você deseja", View.produto_listar())
         if op: 
-            idProduto = op.get_idProduto()
+            idProduto = op.get_id()
             qtd = st.number_input("Qual a quantidade desse produto que você quer?", value=0)
             if st.button("Adicionar no carrinho"):
                 try:

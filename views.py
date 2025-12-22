@@ -4,14 +4,15 @@ from models.produto import Produto, ProdutoDAO
 from models.venda_item import VendaItem, VendaItemDAO
 from models.venda import Venda, VendaDAO
 from models.carrinho import Carrinho, CarrinhoDAO
-from models.favorito import Favorito, FavoritoDAO
+from models.favorito import FavoritoDAO
+from models.dao import DAO
 
 class View:
     @staticmethod
-    def cliente_criar_admin(email, senha):
-        id = 0
-        nome = ""
-        telefone = 0
+    def cliente_criar_admin(email="admin@", senha="admin"):
+        id = None
+        nome = "Administrador"
+        telefone = 84999999999
         for obj in ClienteDAO.listar():
             if obj.get_email() == "admin@" and obj.get_senha() == "admin": return
         ClienteDAO.inserir(Cliente(id, nome, email, telefone, senha)) # se o if não for verdadeiro, ele passa para a próxima linha e cria um novo admin
@@ -19,13 +20,13 @@ class View:
     def cliente_autenticar(email, senha):
         for obj in View.cliente_listar():
             if obj.get_email() == email and obj.get_senha() == senha: 
-                return { "id" : obj.get_idCliente(), "nome" : obj.get_nome(), "email": obj.get_email(), "senha" : obj.get_senha()}
+                return { "id" : obj.get_id(), "nome" : obj.get_nome(), "email": obj.get_email(), "senha" : obj.get_senha()}
         return None
     @staticmethod
     def get_cliente_id(email, senha):
         for obj in View.cliente_listar():
             if obj.get_email() == email and obj.get_senha() == senha: 
-                return obj.get_idCliente()
+                return obj.get_id()
         return None
     def cliente_inserir(nome, email, telefone, senha):
         id = 0
@@ -247,7 +248,7 @@ class View:
         vendas: list[Venda] = VendaDAO.listar()
         conteudo = []
         for venda in vendas:
-            cliente: Cliente = ClienteDAO.listar_id(venda.get_idCliente())
+            cliente: Cliente = ClienteDAO.listar_id(venda.get_id())
             vis: list[VendaItem] = VendaItemDAO.listar_idVenda(venda.get_idCompra())
             for vi in vis:
                 produto: Produto = ProdutoDAO.listar_id(vi.get_idProduto())
@@ -267,8 +268,8 @@ class View:
         clientes : list[Cliente] = ClienteDAO.listar()
         conteudo = []
         for c in clientes:
-            cliente : Cliente = ClienteDAO.listar_id(c.get_idCliente())
-            vendas : list[Venda] = VendaDAO.listar_meus(cliente.get_idCliente())
+            cliente : Cliente = ClienteDAO.listar_id(c.get_id())
+            vendas : list[Venda] = VendaDAO.listar_meus(cliente.get_id())
             total = 0
             conteudo.append(cliente.get_nome())
             for venda in vendas:
@@ -297,7 +298,7 @@ class View:
         for f in favoritos:
             produto = ProdutoDAO.listar_id(f.get_idProduto())
             fav.append({
-            "idProduto": produto.get_idProduto(),
+            "idProduto": produto.get_id(),
             "Produto": produto.get_descricao(),
             "Preço": produto.get_preco()
         })

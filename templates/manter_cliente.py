@@ -20,7 +20,8 @@ class ManterClienteUI:
             list_dic = []
             for cliente in clientes: list_dic.append(cliente.to_json())
             df = pd.DataFrame(list_dic)
-            st.dataframe(df, hide_index=True, column_order=["idCliente", "nome", "email", "telefone", "senha"])     
+            df["telefone"] = df["telefone"].astype(str)
+            st.dataframe(df, hide_index=True, column_order=["id", "nome", "email", "telefone", "senha"])     
 
     def inserir():
         id = 0
@@ -48,7 +49,7 @@ class ManterClienteUI:
             senha = st.text_input("Nova senha", op.get_senha())
             if st.button("Atualizar"):
                 try:
-                    id = op.get_idCliente()
+                    id = op.get_id()
                     View.cliente_atualizar(id, nome, email, telefone, senha)
                     st.success("Cliente atualizado com sucesso!")
                     time.sleep(1)
@@ -64,7 +65,7 @@ class ManterClienteUI:
             op = st.selectbox("Excluir Clientes", clientes)
             if op:
                 if st.button("Excluir"):
-                    id = op.get_idCliente()
+                    id = op.get_id()
                     nome = op.get_nome()
                     email = op.get_email()
                     telefone = op.get_telefone()
